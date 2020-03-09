@@ -20,4 +20,9 @@ export class ShoppingService {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.emit(this.ingredients.slice())
   }
+
+  onIngredientsAdded(ingredients:Ingredient[]){
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit(this.ingredients.slice())
+  }  
 }
