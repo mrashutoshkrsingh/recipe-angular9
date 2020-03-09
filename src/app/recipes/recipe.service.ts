@@ -4,7 +4,7 @@ import { Recipe } from './recipe.model';
 @Injectable({
   providedIn: 'root'
 })
-@Injectable()
+
 export class RecipeService {
   recipeSelected=new EventEmitter<Recipe>();
   private recipes: Recipe[]=[

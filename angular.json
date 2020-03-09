@@ -5,7 +5,11 @@
   "projects": {
     "recipe-angular9": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "component": {
+          "spec": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
