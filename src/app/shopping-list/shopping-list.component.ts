@@ -29,6 +29,9 @@ export class ShoppingListComponent implements OnInit, DoCheck, OnDestroy {
 
   }
 
+  onEditItem(index:number){
+    this.shoppingService.startedEditing.next(index)
+  }
   // onIngredientAdded(ingredient:Ingredient){
   //   // this.ingredients.push(ingredient);
   //   this.shoppingService.onIngredientAdded(ingredient)
