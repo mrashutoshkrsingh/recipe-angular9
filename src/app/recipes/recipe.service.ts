@@ -10,7 +10,8 @@ import { Subject } from 'rxjs';
 
 export class RecipeService {
   // recipeSelected=new EventEmitter<Recipe>();
-  recipeSelected=new Subject<Recipe>();
+  recipeSelected= new Subject<Recipe>();
+  recipeAdded= new Subject<Recipe[]>();
 
   private recipes: Recipe[]=[
     new Recipe('Test','A test Recipe','https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=735&q=80',[
@@ -32,8 +33,25 @@ export class RecipeService {
     return this.recipes.slice()[i]
   }
 
+  addRecipe(recipe:Recipe){
+    this.recipes.push(recipe);
+    this.recipeAdded.next(this.recipes.slice())
+  }
+
+  editRecipe(recipe:Recipe, index:number){
+    this.recipes[index]=recipe;
+    this.recipeAdded.next(this.recipes.slice())
+  }
+  deleteRecipe(index:number){
+    this.recipes.splice(index,1);
+    this.recipeAdded.next(this.recipes.slice())
+  }
+
   addIngredientsToShoppingList(ingredients: Ingredient[]){
     this.shoppingService.onIngredientsAdded(ingredients)
   }
 
+  addIngredientToRecipe(ingredient: Ingredient, index:number){
+    this.recipes[index].ingredients.push(ingredient);
+  }
 }

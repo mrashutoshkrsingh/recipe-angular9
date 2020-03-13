@@ -36,7 +36,6 @@ export class ShoppingService {
   onIngredientDelete(index:number){
     this.ingredients.splice(index,1);
     this.ingredientsChanged.next(this.ingredients.slice())
-
   }
 
   onIngredientsAdded(ingredients:Ingredient[]){
