@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form  #authForm='ngForm' (ngSubmit)='onSubmit(authForm)'>
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+    <div style="text-align: center;">
+      <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -16,7 +20,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input
-          type="email"
+          type="password"
           id="password"
           class="form-control"
           ngModel
@@ -26,9 +30,9 @@
         />
       </div>
 
-      {{authForm.value | json}}
+      {{ authForm.value | json }}
       <div>
-        <button class="btn btn-primary" [disabled]='authForm.invalid'>
+        <button class="btn btn-primary" [disabled]="authForm.invalid">
           {{ isLoginMode ? "Login" : "Sign Up" }}
         </button>
         |
