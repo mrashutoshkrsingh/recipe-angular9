@@ -4,7 +4,7 @@ import { catchError, tap } from "rxjs/operators";
 import { throwError, Subject, BehaviorSubject } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
-import { clearTimeout } from "timers";
+// import { clearTimeout } from "timers";
 
 interface AuthResponseData {
   idToken: string;
@@ -18,7 +18,7 @@ interface AuthResponseData {
   providedIn: "root"
 })
 export class AuthService {
-  tokenExpirationTimer: NodeJS.Timeout;
+  tokenExpirationTimer: any;
   constructor(private http: HttpClient, private router: Router) {}
   user = new BehaviorSubject<User>(null);
   signup(email: string, password: string) {
